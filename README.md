@@ -19,7 +19,7 @@ Pacote em Python para resolução de Equações Diferenciais Parciais (EDPs) uti
     git clone https://github.com/seu_usuario/pde-solver.git
     cd pde-solver
     make install
-    ```
+  ```
 
 ## Como usar
 
