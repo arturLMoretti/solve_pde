@@ -1,65 +1,43 @@
-PDE Solver
-Este projeto oferece uma implementação simples de métodos numéricos para resolver equações diferenciais parciais (EDPs). O foco inicial é a solução da equação do calor unidimensional utilizando o método de diferenças finitas explícitas.
+# PDE Solver
 
-💡 Funcionalidades
-Resolução numérica da equação do calor 1D usando o método de diferenças finitas.
+## Descrição
+Pacote em Python para resolução de Equações Diferenciais Parciais (EDPs) utilizando o método de Diferenças Finitas.
 
-Condições iniciais configuráveis, incluindo uma onda senoidal e uma distribuição gaussiana.
+---
 
-Visualização das soluções com gráficos utilizando matplotlib.
+## Funcionalidades
+- Solução de EDPs 1D
+- Implementação do método de diferenças finitas explícito
+- Funções auxiliares para condições iniciais e de contorno
+- Visualização dos resultados com gráficos
 
-Configuração fácil com o gerenciador de dependências Poetry.
 
-🚀 Instruções de Uso
-Requisitos
-Antes de começar, você precisará do Python 3.8+ e do Poetry instalado. Caso não tenha o Poetry, você pode instalá-lo aqui.
+## Instalação
 
-Instalação
-Clone o repositório:
+1. Clone o repositório:
+  ```bash
+    git clone https://github.com/seu_usuario/pde-solver.git
+    cd pde-solver
+    make install
+    ```
 
-bash
-Copy
-Edit
-git clone https://github.com/usuario/pde_solver.git
-cd pde_solver
-Instale as dependências usando o Poetry:
+## Como usar
 
-bash
-Copy
-Edit
-poetry install
-Ative o ambiente virtual:
+Exemplo de uso para resolver a equação do calor 1D:
 
-bash
-Copy
-Edit
-poetry shell
-Rodar o Jupyter Notebook:
-
-bash
-Copy
-Edit
-make notebook
-Ou, se preferir, abra o arquivo main.py diretamente.
-
-Exemplo de Uso
-No Jupyter Notebook ou no script Python, você pode usar o seguinte código para rodar a solução da equação do calor:
-
-python
-Copy
-Edit
+```python
 import numpy as np
 from pde_solver.fdm import heat_equation_1d
 from pde_solver.conditions import initial_condition_sin
 from pde_solver.plotter import plot_solution
 
-# Configuração do domínio
+# Definição do domínio
 L = 1.0
 nx = 51
 dx = L / (nx - 1)
 x = np.linspace(0, L, nx)
 
-# Parâmetros físicos
+# Definição dos parâmetros
 alpha = 0.01
 dt = 0.0005
 t_max = 0.1
@@ -67,65 +45,23 @@ t_max = 0.1
 # Condição inicial
 u0 = initial_condition_sin(x)
 
-# Resolução
+# Solução numérica
 u_final = heat_equation_1d(u0, alpha, dx, dt, t_max)
 
-# Gráfico
+# Visualização
 plot_solution(x, u0, u_final, t_max)
-🧪 Testes
-Para rodar os testes do projeto (se houver), use:
 
-bash
-Copy
-Edit
-make test
-📂 Estrutura do Projeto
-bash
-Copy
-Edit
-pde_solver/
-├── pde_solver/
-│   ├── __init__.py
-│   ├── fdm.py
-│   ├── conditions.py
-│   ├── plotter.py
-├── main.py
-├── Makefile
-├── pyproject.toml
-pde_solver/: Contém os módulos principais para a resolução da EDP.
+```
 
-main.py: Arquivo principal para rodar a simulação.
+## Documentação
+Fórmulas Utilizadas: Método de diferenças finitas explícito para a equação do calor 1D
 
-Makefile: Automatiza tarefas como instalar dependências e rodar o Jupyter.
+Estabilidade: O passo de tempo dt deve satisfazer a condição de estabilidade de Fourier (Fo <= 0.5)
 
-pyproject.toml: Arquivo de configuração do Poetry.
+## Contribuição
 
-📚 Tecnologias
-Python 3.x
+Pull requests são bem-vindos. Para mudanças maiores, abra uma issue para discutirmos o que você gostaria de modificar.
 
-NumPy: Para manipulação de arrays e cálculo numérico.
+## Licença
 
-Matplotlib: Para visualização gráfica dos resultados.
-
-Poetry: Para gerenciamento de dependências e ambiente.
-
-Jupyter Notebook: Para interação e visualização durante o desenvolvimento.
-
-🔧 Como Contribuir
-Fork o repositório.
-
-Crie uma branch com suas mudanças (git checkout -b feature/your-feature).
-
-Faça o commit das suas alterações (git commit -m 'Adicionando nova funcionalidade').
-
-Faça o push para sua branch (git push origin feature/your-feature).
-
-Abra um Pull Request.
-
-📝 Licença
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais informações.
-
-📋 Dicas para modificar ou expandir:
-Você pode facilmente adicionar novos métodos de solução de EDPs (como Crank-Nicolson) ou outras equações (como equações de ondas).
-
-Também pode configurar diferentes tipos de condições iniciais ou de contorno.
+MIT License
